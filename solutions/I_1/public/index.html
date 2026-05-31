@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starter Project</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f0f2f5; }
+        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+        #status { font-weight: bold; color: #007bff; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>System Status</h1>
+        <p>API Response: <span id="status">Loading...</span></p>
+        <p id="time"></p>
+    </div>
+    <script>
+        async function checkStatus() {
+            try {
+                const response = await fetch('/api/status');
+                const data = await response.json();
+                document.getElementById('status').innerText = data.status;
+                document.getElementById('time').innerText = `Last checked: ${data.timestamp}`;
+            } catch (err) {
+                document.getElementById('status').innerText = 'Offline';
+                document.getElementById('status').style.color = 'red';
+            }
+        }
+        checkStatus();
+    </script>
+</body>
+</html>
