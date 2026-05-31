@@ -1,0 +1,2 @@
+Failed to parse JSON: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Raw content: java\n        package com.example;\n        public class Calculator {\n            public int add(int a, int b) {\n                return a + b;\n            }\n        }\n
